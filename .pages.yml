@@ -1,0 +1,54 @@
+media:
+  input: assets/images
+  output: assets/images
+
+content:
+  - name: startseite
+    label: "Startseite"
+    type: file
+    path: index.html
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: "Hauptüberschrift"
+        type: string
+
+      - name: intro
+        label: "Einleitungstext"
+        type: text
+
+      - name: hero_image
+        label: "Titelbild / Hauptbild"
+        type: image
+
+      - name: body
+        label: "HTML-Inhalt der Seite"
+        type: rich-text
+        options:
+          format: html
+          switcher: true
+
+  - name: lernseite
+    label: "🧪 LERNSEITE – gefahrloser Test"
+    type: file
+    path: pages-cms-lernseite.html
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: "Hauptüberschrift"
+        type: string
+
+      - name: intro
+        label: "Einleitungstext"
+        type: text
+
+      - name: hero_image
+        label: "Titelbild / Hauptbild"
+        type: image
+
+      - name: body
+        label: "HTML-Inhalt der Lernseite"
+        type: rich-text
+        options:
+          format: html
+          switcher: true

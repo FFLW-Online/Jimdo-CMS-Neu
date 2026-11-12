@@ -1,0 +1,14 @@
+NOTFALL-REPARATURPAKET
+
+Diese Dateien im Stamm ersetzen:
+- kontakt.html
+- begegnungstreffen.html
+- ukraine-cafe.html
+- friday-welcome.html
+- deutschtraining.html
+- treffpunkt-international.html
+- fflw-international.html
+
+Keine Mediendatei umbenennen.
+Das Deutschtraining-Bild wird vorläufig über diesen vorhandenen Pfad geladen:
+assets/images/eingang-deutschtraining.jpg.jpg

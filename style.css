@@ -1,0 +1,447 @@
+/* ==========================================================================
+   1. GLOBALE EINSTELLUNGEN & VARIABLEN
+   ========================================================================== */
+:root {
+  --primary-color: #004080;
+  --nav: #004080;
+  --text-color: #333333;
+  --bg-color: #ffffff;
+  --light-bg: #f4f4f4;
+  --border-color: #dddddd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Mobil: Schlicht weißer Hintergrund */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  background-image: none;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Desktop (ab 768px): Garten-Hintergrundbild auf HTML aktivieren */
+@media (min-width: 768px) {
+  html {
+    background-color: #dce6f2;
+    background-image: url('assets/images/garten-hintergrundbild.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+  }
+  
+  body {
+    background: transparent;
+    padding: 30px 0;
+  }
+}
+
+/* Alle Bilder im Inhaltsbereich flexibel an Mobilbildschirme anpassen */
+.content img,
+.content figure img,
+.site-header img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* ==========================================================================
+   2. HEADER & LAYOUT (DESKTOP: TEIL DES WEISSEN CONTAINER-DOKUMENTS)
+   ========================================================================== */
+.site-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px 25px 10px 25px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 4px 4px 0 0;
+}
+
+.site-header img {
+  display: block;
+  margin: 0 auto;
+}
+
+.layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 25px;
+  background-color: #ffffff;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   3. NAVIGATION (BOMBENFEST LINKSBÜNDIG + WEISSE SUBMENÜ-SCHRIFT)
+   ========================================================================== */
+.side-nav {
+  width: 250px;
+  flex-shrink: 0;
+  background-color: var(--nav);
+  color: #ffffff;
+  padding: 10px 0;
+  border-radius: 4px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.nav-list,
+.side-nav ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.nav-list li {
+  position: relative;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 3.1 Browser-Standards für Aufklappmenüs (<details> & <summary>) bereinigen */
+.side-nav details {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.side-nav details summary {
+  display: block;
+  cursor: pointer;
+  list-style: none !important;
+  position: relative;
+  margin: 0 !important;
+  padding: 10px 18px !important;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: left !important;
+  box-sizing: border-box;
+}
+
+.side-nav details summary::-webkit-details-marker,
+.side-nav details summary::marker {
+  display: none !important;
+  content: "" !important;
+}
+
+/* 3.2 Normale Direkt-Links ausrichten */
+.nav-list > li > a,
+.nav-list > li > a:visited {
+  display: block;
+  padding: 10px 18px !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: left !important;
+  box-sizing: border-box;
+}
+
+/* 3.3 Doppel-Padding bei Links innerhalb von <summary> unterbinden */
+.side-nav details summary a,
+.side-nav details summary a:visited {
+  display: inline-block;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-list a:hover,
+.side-nav details summary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Flexbox für Übersetzungstool */
+.nav-link-flex {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.flag-carousel-inline {
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 65px;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.flag-track-inline {
+  display: inline-block;
+  animation: flag-scroll 8s linear infinite;
+}
+
+.flag-track-inline span {
+  font-size: 1rem;
+  margin-right: 4px;
+}
+
+@keyframes flag-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* 3.4 Sub-Menüs (Unterpunkte) gezielt einrücken & auf leuchtendes Weiß zwingen */
+.side-nav details ul li a,
+.side-nav details ul li a:visited {
+  display: block;
+  padding-left: 32px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  font-weight: normal;
+  font-size: 0.95rem;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.side-nav details ul li a:hover {
+  color: #ffd700 !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Plus- & Minus-Kästchen im Menü */
+.side-nav summary::after {
+  content: "+";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.side-nav details[open] > summary::after {
+  content: "−";
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================================================
+   4. INHALTSBEREICH (TEIL DER NAHTLOSEN WEISSEN FLÄCHE)
+   ========================================================================== */
+.content {
+  flex-grow: 1;
+  background: #ffffff;
+  padding: 0 10px 20px 10px;
+  min-width: 0;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+  color: var(--primary-color);
+  margin-top: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ==========================================================================
+   5. UNTERER BLAUER KONTAKT-BLOCK (FLASCHENPOST)
+   ========================================================================== */
+.contact-block {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 30px;
+}
+
+@media (min-width: 768px) {
+  .contact-block {
+    background-color: var(--primary-color);
+    border-left: 25px solid #ffffff;
+    border-right: 25px solid #ffffff;
+    padding: 30px;
+  }
+}
+
+.contact-block p {
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.contact-block a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.contact-block a:hover {
+  color: #ffd700;
+}
+
+.flaschenpost-title {
+  display: inline-block;
+  background-color: #1a237e;
+  color: #ffffff;
+  padding: 10px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 15px 0;
+  border-radius: 3px;
+}
+
+.legal-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 25px 25px 25px;
+  background-color: #ffffff;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #666666;
+  border-radius: 0 0 4px 4px;
+}
+
+.legal-footer a {
+  color: #666666;
+  text-decoration: none;
+}
+
+.legal-footer a:hover {
+  text-decoration: underline;
+}
+
+/* SCHATTEN FÜR DEN WEISSEN GESAMTKASTEN (DESKTOP) */
+@media (min-width: 768px) {
+  .site-header {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+  }
+  .layout,
+  .contact-block {
+    box-shadow: -3px 0 10px -2px rgba(0, 0, 0, 0.15), 3px 0 10px -2px rgba(0, 0, 0, 0.15);
+  }
+  .legal-footer {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ==========================================================================
+   6. MOBILE RESPONSIVENESS (SCHMALER ALS 768PX)
+   ========================================================================== */
+@media (max-width: 767px) {
+  body {
+    padding-top: 60px;
+    background-color: #ffffff;
+  }
+
+  .site-header {
+    margin: 0;
+    padding: 10px 15px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .layout {
+    flex-direction: column;
+    padding: 10px;
+    gap: 0;
+    box-shadow: none;
+  }
+
+  .side-nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--nav);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    max-height: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    background-color: var(--nav);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .nav-list {
+    display: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background: var(--nav);
+  }
+
+  .nav-list.is-open {
+    display: block;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content h1,
+  .content h2,
+  .content h3 {
+    font-size: 1.5rem !important;
+    line-height: 1.3;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .content h4 {
+    font-size: 1.2rem !important;
+  }
+
+  .content {
+    width: 100%;
+    padding: 15px 10px;
+  }
+
+  .content .float-left,
+  .content img.warenhaus-zeichnung {
+    float: none;
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 18px;
+  }
+
+  .contact-block {
+    margin: 0;
+    padding: 20px 15px;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  .legal-footer {
+    padding: 15px 10px;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,16 @@
+body{font-family:Arial,sans-serif;line-height:1.55;margin:0;color:#243746;background:#e9f1f7}nav,main,footer{max-width:1050px;margin:auto;padding:1rem 1.4rem;background:#fff}nav{background:#155f91}nav a{color:#fff;margin-right:1rem}h1,h2,h3,a{color:#155f91}footer{margin-top:1rem}.contact-form{display:grid;gap:1rem;max-width:650px}.contact-form label{display:grid;gap:.35rem}.contact-form input,.contact-form textarea{font:inherit;padding:.7rem;border:1px solid #7b8790}.contact-form button{padding:.7rem}.privacy-note,.media-note,#form-status{padding:.8rem;border-left:4px solid #b7791f;background:#fff8e1}.language-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.7rem;list-style:none;padding:0}.language-grid a{display:block;padding:.9rem;border:1px solid #c8d8e5;text-decoration:none;background:#f7fbfe}.language-grid a:focus,.language-grid a:hover{text-decoration:underline;outline:3px solid #f3c64f}
+/* Freigegebene Originalbilder */
+body {
+  background-color: #e9f1f7;
+  background-image: linear-gradient(rgba(233, 241, 247, .34), rgba(233, 241, 247, .34)), url("assets/images/garten-hintergrundbild.jpg");
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.deutschtraining-bild { margin: 1.25rem 0; }
+.deutschtraining-bild img { display: block; width: 100%; max-width: 980px; height: auto; }
+.deutschtraining-bild figcaption { margin-top: .35rem; font-size: .92rem; }
+@media (max-width: 720px) {
+  body { background-attachment: scroll; }
+  .deutschtraining-bild { margin: 1rem 0; }
+}
